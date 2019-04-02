@@ -1,19 +1,15 @@
 import * as express from "express";
+import { listProducts, productDetail, addProduct } from "./../controllers";
+
 const router = express.Router();
 
 // List of products
-router.route("/").get((req: any, res: any) => {
-  res.status(200).send({ msg: "List of products" });
-});
+router.route("/").get(listProducts);
 
 // Product detail.
-router.route("/:id").get((req: any, res: any) => {
-  res.status(200).send({ msg: "Get one" });
-});
+router.route("/:id").get(productDetail);
 
 // Add product.
-router.route("/").post((req: any, res: any) => {
-  res.status(200).send({ msg: "Add one" });
-});
+router.route("/").post(addProduct);
 
 export const productsRouter = router;

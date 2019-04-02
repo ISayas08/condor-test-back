@@ -1,9 +1,8 @@
 import * as express from "express";
+import { addUserController } from "./../controllers";
 const router = express.Router();
 
 // Create user
-router.route("/").post((req: any, res: any) => {
-  res.status(200).send({ msg: "Add one" });
-});
+router.route("/").post(addUserController);
 
 export const userRouter = router;
