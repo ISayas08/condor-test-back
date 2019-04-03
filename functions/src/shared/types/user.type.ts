@@ -1,4 +1,5 @@
 export type User = {
-  id: string;
-  shoppingCarId: string;
+  userName?: string;
+  userEmail?: string;
+  shoppingCarId?: string;
 };
