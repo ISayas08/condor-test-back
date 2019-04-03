@@ -1,7 +1,7 @@
 import * as express from "express";
-import { productsRouter } from "./productRoutes";
-import { userRouter } from "./usersRoutes";
-import { shoppingCart } from "./shoppingCart";
+import { productsRouter } from "./product.route";
+import { userRouter } from "./users.route";
+import { shoppingCart } from "./shoppingCart.route";
 
 const router = express.Router();
 
