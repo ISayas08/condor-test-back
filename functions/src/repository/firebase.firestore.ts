@@ -8,7 +8,11 @@ export const getCollection = (collection: string) => {
       .get()
       .then(collection => {
         if (collection) {
-          resolve(collection.docs.map(doc => doc.data()));
+          resolve(
+            collection.docs.map(doc =>
+              Object.assign({ _id: doc.id }, doc.data())
+            )
+          );
         } else
           reject({
             status: 404,

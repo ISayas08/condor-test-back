@@ -18,7 +18,9 @@ const addProduct = (productData: Product): Promise<any> => {
       productData.category &&
       productData.imgURL &&
       productData.price &&
-      productData.quantity)
+      productData.name &&
+      productData.description &&
+      productData.available)
     ? PRODUCT_REPOSITORY.addProduct(productData)
     : Promise.reject({ status: 400 });
 };

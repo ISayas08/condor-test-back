@@ -20,7 +20,7 @@ const productDetail = (req: any, res: any) => {
 
 const addProduct = (req: any, res: any) => {
   PRODUCT_SERVICES.addProduct(
-    pick(req.body, "description", "price", "category", "quantity", "imgURL")
+    pick(req.body, "description", "price", "category", "available", "imgURL", "name", "description")
   )
     .then(resAdd => {
       if (resAdd) {

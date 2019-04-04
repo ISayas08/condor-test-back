@@ -3,9 +3,9 @@ import * as express from "express";
 import * as bodyParser from "body-parser";
 import * as functions from "firebase-functions";
 
-import { routes } from "./routes";
-
 admin.initializeApp();
+
+import { routes } from "./routes";
 
 var app = express();
 
