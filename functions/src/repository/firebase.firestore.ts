@@ -8,7 +8,7 @@ export const getCollection = (collection: string) => {
       .get()
       .then(collection => {
         if (collection) {
-          resolve(collection);
+          resolve(collection.docs.map(doc => doc.data()));
         } else
           reject({
             status: 404,
