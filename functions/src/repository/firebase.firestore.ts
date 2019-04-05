@@ -6,10 +6,10 @@ export const getCollection = (collection: string) => {
 
     collRef
       .get()
-      .then(collection => {
-        if (collection) {
+      .then(collectionRes => {
+        if (collectionRes) {
           resolve(
-            collection.docs.map(doc =>
+            collectionRes.docs.map(doc =>
               Object.assign({ _id: doc.id }, doc.data())
             )
           );

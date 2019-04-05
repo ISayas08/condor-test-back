@@ -3,11 +3,11 @@ import * as express from "express";
 import * as bodyParser from "body-parser";
 import * as functions from "firebase-functions";
 
-admin.initializeApp();
-
 import { routes } from "./routes";
 
-var app = express();
+admin.initializeApp();
+
+const app = express();
 
 // Middleware
 app.use(bodyParser.urlencoded({ extended: false }));

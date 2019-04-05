@@ -6,7 +6,7 @@ const addUser = () => {
   const newUser: User = {
     userName: "New user",
     userEmail: "Unknown",
-    shoppingCarId: "Unassigned"
+    shoppingCartId: "Unassigned"
   };
 
   return USER_REPOSITORY.addUser(newUser);

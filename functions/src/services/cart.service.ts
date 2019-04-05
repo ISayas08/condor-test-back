@@ -15,7 +15,7 @@ const getCart = (cartId: string): Promise<any> => {
 
 const updateCart = (cartId: string, cartNewData: Cart): Promise<any> => {
   if (cartId && !isEmpty(cartNewData) && cartNewData.products) {
-    cartNewData = {
+    const cartNewDataAux = {
       products: cartNewData.products
         .map(product =>
           pick(product, "_id", "imgURL", "name", "price", "quantity")
@@ -23,7 +23,7 @@ const updateCart = (cartId: string, cartNewData: Cart): Promise<any> => {
         .filter(product => !isEmpty(product))
     };
 
-    return CART_REPOSITORY.updateCar(cartId, cartNewData);
+    return CART_REPOSITORY.updateCar(cartId, cartNewDataAux);
   } else return Promise.reject({ status: 400 });
 };
 

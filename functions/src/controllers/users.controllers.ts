@@ -15,7 +15,7 @@ const addUserController = (req: any, res: any) => {
 const updateUserController = (req: any, res: any) => {
   USER_SERVICES.updateUser(
     req.body.userId,
-    pick(req.body, "userName", "userEmail", "shoppingCarId")
+    pick(req.body, "userName", "userEmail", "shoppingCartId")
   )
     .then(resUpdate => {
       res

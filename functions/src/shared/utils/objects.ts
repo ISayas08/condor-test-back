@@ -4,7 +4,7 @@ export const isEmpty = (obj: object): boolean => {
 
 export const pick = (obj: any, ...keys: string[]): any => {
   if (keys.length && !isEmpty(obj)) {
-    let auxObj: any = {};
+    const auxObj: any = {};
     keys.forEach(key => {
       if (obj[key]) auxObj[key] = obj[key];
     });
