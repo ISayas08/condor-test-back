@@ -1,6 +1,5 @@
 import { CART_SERVICES } from "./../services";
 import { createResponse } from "./../shared/utils/responses";
-import { pick } from "../shared/utils/objects";
 
 const addShoppingCart = (req: any, res: any) => {
   CART_SERVICES.addCart()
@@ -19,11 +18,13 @@ const getShoppingCartDetail = (req: any, res: any) => {
 };
 
 const updateShoppingCart = (req: any, res: any) => {
-  CART_SERVICES.updateCart(req.params.id, pick(req.body, "products"))
+  CART_SERVICES.addProductToCart(req.params.id, req.body)
     .then(carts => {
-      res.status(200).send(createResponse("Cart updated", carts));
+      res.status(200).send(createResponse("Products added", carts));
     })
-    .catch(err => res.status(err.status ? err.status : 500).send(err));
+    .catch(err => {
+      res.status(err.status ? err.status : 500).send(err);
+    });
 };
 
 export { addShoppingCart, getShoppingCartDetail, updateShoppingCart };

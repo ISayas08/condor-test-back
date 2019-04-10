@@ -1,5 +1,5 @@
 export type Cart = {
-  products: CartProduct[];
+  products: any;
 };
 export type CartProduct = {
   _id: string;

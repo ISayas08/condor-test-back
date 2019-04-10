@@ -12,3 +12,17 @@ export const pick = (obj: any, ...keys: string[]): any => {
   }
   return {};
 };
+
+export const normalizeArray = (array: any[] = [], propertyName: string) => {
+  if (array && array.length) {
+    const auxObj: any = {};
+
+    array.forEach((item: any) => {
+      const auxItem = Object.assign({}, item);
+      auxObj[item[propertyName]] = auxItem;
+    });
+
+    return auxObj;
+  }
+  return {};
+};
