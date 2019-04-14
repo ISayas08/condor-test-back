@@ -50,18 +50,22 @@ const addProductToCart = (cartId: string, productToAdd: any): Promise<any> => {
 
           const cartData = Object.assign({}, cart.doc);
 
-          if (cartData.products["" + PRODUCT_ID]) {
+          if (cartData.products[PRODUCT_ID]) {
 
             const quantity = cartData.products[PRODUCT_ID].quantity;
 
-            cartData.products["" + PRODUCT_ID].quantity =
+            cartData.products[PRODUCT_ID].quantity =
               "" + (parseInt(quantity) + parseInt(QUANTITY));
-              
-            updateCart(cartId, cartData).then(resUpdate => resolve(resUpdate)).catch(err => reject(err));
+
+            if (cartData.products[PRODUCT_ID].quantity <= 0) {
+              delete cartData.products[PRODUCT_ID];
+            }
+
+            updateCart(cartId, cartData).then(resUpdate => resolve({ cartId: resUpdate._id })).catch(err => reject(err));
           } else {
             getProduct(PRODUCT_ID).then(product => {
               if (product) {
-                cartData.products["" + PRODUCT_ID] = {
+                cartData.products[PRODUCT_ID] = {
                   _id: PRODUCT_ID,
                   imgURL: product.doc.imgURL,
                   name: product.doc.name,
