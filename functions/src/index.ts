@@ -7,7 +7,7 @@ import { routes } from "./routes";
 
 admin.initializeApp();
 
-var app = express();
+const app = express();
 
 // Middleware
 app.use(bodyParser.urlencoded({ extended: false }));

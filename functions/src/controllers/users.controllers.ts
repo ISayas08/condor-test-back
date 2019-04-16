@@ -12,10 +12,22 @@ const addUserController = (req: any, res: any) => {
 };
 
 // Update user controller.
+const getUserController = (req: any, res: any) => {
+  USER_SERVICES.getUser(
+    req.params.id
+  ).then(resGet => {
+    res
+      .status(200)
+      .send(createResponse("User", resGet));
+  })
+    .catch(err => res.status(err.status ? err.status : 500).send(err));
+};
+
+// Update user controller.
 const updateUserController = (req: any, res: any) => {
   USER_SERVICES.updateUser(
-    req.body.userId,
-    pick(req.body, "userName", "userEmail", "shoppingCarId")
+    req.params.id,
+    pick(req.body, "userName", "userEmail", "shoppingCartId")
   )
     .then(resUpdate => {
       res
@@ -25,4 +37,4 @@ const updateUserController = (req: any, res: any) => {
     .catch(err => res.status(err.status ? err.status : 500).send(err));
 };
 
-export { addUserController, updateUserController };
+export { addUserController, updateUserController, getUserController };

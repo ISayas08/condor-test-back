@@ -6,7 +6,7 @@ const addUser = () => {
   const newUser: User = {
     userName: "New user",
     userEmail: "Unknown",
-    shoppingCarId: "Unassigned"
+    shoppingCartId: "Unassigned"
   };
 
   return USER_REPOSITORY.addUser(newUser);
@@ -18,4 +18,10 @@ const updateUser = (userId: string, newUserData: User) => {
   } else return Promise.reject({ status: 400 });
 };
 
-export { addUser, updateUser };
+const getUser = (userId: string) => {
+  if (userId) {
+    return USER_REPOSITORY.getUser(userId);
+  } else return Promise.reject({ status: 400 });
+};
+
+export { addUser, updateUser, getUser };

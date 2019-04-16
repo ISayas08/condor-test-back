@@ -1,9 +1,10 @@
 export type Cart = {
-  userId: string;
-  products: CartProduct[];
+  products: any;
 };
 export type CartProduct = {
-  productId: string;
-  description: string;
+  _id: string;
+  imgURL: string;
+  name: string;
   price: string;
+  quantity: string;
 };

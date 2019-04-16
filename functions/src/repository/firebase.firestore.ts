@@ -6,9 +6,13 @@ export const getCollection = (collection: string) => {
 
     collRef
       .get()
-      .then(collection => {
-        if (collection) {
-          resolve(collection);
+      .then(collectionRes => {
+        if (collectionRes) {
+          resolve(
+            collectionRes.docs.map(doc =>
+              Object.assign({ _id: doc.id }, doc.data())
+            )
+          );
         } else
           reject({
             status: 404,

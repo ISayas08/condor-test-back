@@ -4,10 +4,24 @@ export const isEmpty = (obj: object): boolean => {
 
 export const pick = (obj: any, ...keys: string[]): any => {
   if (keys.length && !isEmpty(obj)) {
-    let auxObj: any = {};
+    const auxObj: any = {};
     keys.forEach(key => {
       if (obj[key]) auxObj[key] = obj[key];
     });
+    return auxObj;
+  }
+  return {};
+};
+
+export const normalizeArray = (array: any[] = [], propertyName: string) => {
+  if (array && array.length) {
+    const auxObj: any = {};
+
+    array.forEach((item: any) => {
+      const auxItem = Object.assign({}, item);
+      auxObj[item[propertyName]] = auxItem;
+    });
+
     return auxObj;
   }
   return {};
